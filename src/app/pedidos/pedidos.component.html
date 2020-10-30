@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="cliente">
+    <h5>Cliente: {{pedidoServices.pedido.nombreCliente}}</h5>
+    <h6>Total: {{pedidoServices.pedido.total | currency}}</h6>
+
+  </div>
+  <div class="detalle">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ProductoID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of detalleProductos; let posicion= index">
+          <td>{{producto.productoID}}</td>
+          <td>{{producto.nombreProducto}}</td>
+          <td> <input type="text" class="" [ngModel]="producto.cantidad" (input)="calcularTotal(posicion)"> </td>
+          <td>{{producto.precio}}</td>
+          <td>{{producto.total | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
